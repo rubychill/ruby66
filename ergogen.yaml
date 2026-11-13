@@ -1,0 +1,274 @@
+meta:
+  engine: 4.1.0
+
+units:
+  px: u + 2
+  py: u + 2
+
+points:
+  zones:
+    matrix:
+      anchor:
+        shift: [100, -150]
+      columns:
+        col0:
+          key:
+            column_net: P3
+            width: 1.25*u
+          rows.row0:
+            width: 1u
+            shift: [0.125u, 0]
+          rows.row1:
+            shift: [-0.125u, 0]
+          rows.row4:
+            width: 1u
+            shift: [0.125u, 0]
+        col1:
+          key:
+            column_net: P4
+            stagger: 1.5
+            spread: 1.125u
+        col2:
+          key:
+            column_net: P5
+            stagger: 4.8
+        col3:
+          key:
+            column_net: P6
+            stagger: 1.4
+        col4:
+          key:
+            column_net: P7
+            stagger: -1.4
+          rows.row0:
+            skip: true
+        col5:
+          key:
+            column_net: P8
+            stagger: -2.4
+          rows.row0:
+            skip: true
+            name: "thumbref"
+        col6:
+          key:
+            column_net: P9
+            stagger: 0.3u
+          rows:
+            row0.skip: true
+            row3.skip: true
+            row4.skip: true
+      rows:
+        row0:
+          row_net: P19
+        row1:
+          row_net: P18
+        row2:
+          row_net: P15
+        row3:
+          row_net: P20
+        row4:
+          row_net: P21
+    space:
+      anchor:
+        ref: "thumbref"
+        shift: [-12.7, -19.7 + u]
+        rotate: -15
+      columns:
+        space_col:
+          key:
+            column_net: P7
+            width: 1.25u
+          rows.upper.skip: True
+      rows:
+        space_row:
+          row_net: P19
+    thumb:
+      anchor:
+        ref: "thumbref"
+        orient: -30
+        shift: [15, 0]
+      columns:
+        inner:
+          key:
+            column_net: P8
+            height: 1.25u
+        outer:
+          key:
+            column_net: P9
+            height: 1.25u
+      rows:
+        lower:
+          row_net: P19
+
+outlines:
+  plate_keys:
+    - what: rectangle
+      where: true
+      size: [14, 14]
+  keys:
+    - what: rectangle
+      where: true
+      size: [u, u]
+  board:
+    - what: polygon
+      operation: stack
+      fillet: 2
+      points:
+        # top left
+        - ref: matrix_col0_row3
+          shift: [-0.15u -0.5px, 0.95u + 0.5py]
+        # bottom left
+        - ref: matrix_col0_row1
+          shift: [-0.15u -0.5px, -u -0.5py]
+        # under thumb
+        - ref: matrix_col0_row0
+          shift: [4u + 0.5px + 6, -0.5py]
+        # outside thumb
+        - ref: thumb_outer_lower
+          shift: [0.5px, -0.5py - 3.5]
+        # top of thumb
+        - ref: matrix_col3_row4
+          shift: [4u + 0.5px - 3.57, -4u -0.5py - 4.5]
+        # top right
+        - ref: matrix_col3_row4
+          shift: [4u + 0.5px - 3.57, 0.5py]
+        # top apex
+        - ref: matrix_col3_row4
+          shift: [-0.5px, 0.5py]
+        # middle apex
+        - ref: matrix_col2_row4
+          shift: [-0.5px, 0.5py]
+  plate_outline:
+    - what: polygon
+      operation: stack
+      fillet: 2
+      points:
+        # top left
+        - ref: matrix_col0_row3
+          shift: [-0.15u -0.5px, 0.95u + 0.5py]
+        # bottom left
+        - ref: matrix_col0_row1
+          shift: [-0.15u -0.5px, -u -0.5py]
+        # under thumb
+        - ref: matrix_col0_row0
+          shift: [4u + 0.5px + 6, -0.5py]
+        # outside thumb
+        - ref: thumb_outer_lower
+          shift: [0.5px, -0.5py - 3.5]
+        # top of thumb
+        - ref: matrix_col3_row4
+          shift: [4u + 0.5px - 3.57, -4u -0.5py - 4.5]
+        # bottom of cutout
+        - ref: matrix_col3_row4
+          shift: [4u + 0.5px - 3.57, -u -6.5]
+        # inner cutout
+        - ref: matrix_col3_row4
+          shift: [2u + 0.5px, -u -6.5]
+        # top of cutout
+        - ref: matrix_col3_row4
+          shift: [2u + 0.5px, 0.5py]
+        # top apex
+        - ref: matrix_col3_row4
+          shift: [-0.5px, 0.5py]
+        # middle apex
+        - ref: matrix_col2_row4
+          shift: [-0.5px, 0.5py]
+  plate:
+    - name: plate_outline
+    - operation: subtract
+      name: plate_keys
+
+pcbs:
+  ruby66:
+    template: kicad8
+    outlines:
+      main:
+        outline: board
+      # plate:
+      #   outline: plate_outline
+    footprints:
+      mx_hotswap:
+        what: ceoloide/switch_mx
+        where: true
+        params:
+          reversible: true
+          include_keycap: true
+          include_corner_marks: true
+          hotswap_pads_same_side: true
+          keycap_width: "{{width}}"
+          keycap_height: "{{height}}"
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+      diode:
+        what: ceoloide/diode_tht_sod123
+        where: true
+        params:
+          reversible: true
+          include_traces_vias: true
+          include_tht: true
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0, -5]
+          rotate: 180
+      promicro:
+        what: ceoloide/mcu_nice_nano
+        params:
+          reversible: true
+          reverse_mount: true
+        where:
+          ref: matrix_col6_row2
+          shift: [5,29]
+      trrs:
+        what: ceoloide/trrs_pj320a
+        params:
+          reversible: true
+          TP: "VCC"
+          SL: "GND"
+          R2: "P0"
+        where:
+          ref: matrix_col6_row2
+          shift: [21,45]
+      reset:
+        what: ceoloide/reset_switch_tht_top
+        params:
+          reversible: true
+        where:
+          ref: matrix_col6_row2
+          shift: [24,22]
+          rotate: 90
+      mounting1:
+        what: ceoloide/mounting_hole_plated
+        params:
+          drill: 4.9
+        where:
+          ref: matrix_col0_row4
+          shift: [10, -8]
+      mounting2:
+        what: ceoloide/mounting_hole_plated
+        params:
+          drill: 4.9
+        where:
+          ref: matrix_col0_row0
+          shift: [9, 11]
+      mounting3:
+        what: ceoloide/mounting_hole_plated
+        params:
+          drill: 4.9
+        where:
+          ref: matrix_col4_row4
+          shift: [9, -10]
+      mounting4:
+        what: ceoloide/mounting_hole_plated
+        params:
+          drill: 4.9
+        where:
+          ref: space_space_col_space_row
+          shift: [-1, 12]
+      mounting5:
+        what: ceoloide/mounting_hole_plated
+        params:
+          drill: 4.9
+        where:
+          ref: thumb_inner_lower
+          shift: [9, 11]
