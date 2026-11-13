@@ -14,20 +14,10 @@ points:
         col0:
           key:
             column_net: P3
-            width: 1.25*u
-          rows.row0:
-            width: 1u
-            shift: [0.125u, 0]
-          rows.row1:
-            shift: [-0.125u, 0]
-          rows.row4:
-            width: 1u
-            shift: [0.125u, 0]
         col1:
           key:
             column_net: P4
             stagger: 1.5
-            spread: 1.125u
         col2:
           key:
             column_net: P5
@@ -91,11 +81,11 @@ points:
         inner:
           key:
             column_net: P8
-            height: 1.25u
+            height: 1.5u
         outer:
           key:
             column_net: P9
-            height: 1.25u
+            height: 1.5u
       rows:
         lower:
           row_net: P19
@@ -116,22 +106,22 @@ outlines:
       points:
         # top left
         - ref: matrix_col0_row3
-          shift: [-0.15u -0.5px, 0.95u + 0.5py]
+          shift: [-0.5px, 0.95u + 0.5py]
         # bottom left
         - ref: matrix_col0_row1
-          shift: [-0.15u -0.5px, -u -0.5py]
+          shift: [-0.5px, -u -0.5py]
         # under thumb
         - ref: matrix_col0_row0
-          shift: [4u + 0.5px + 6, -0.5py]
+          shift: [4u + 0.5px + 2, -0.5py]
         # outside thumb
         - ref: thumb_outer_lower
-          shift: [0.5px, -0.5py - 3.5]
+          shift: [0.5px, -0.5py - 5.3]
         # top of thumb
         - ref: matrix_col3_row4
-          shift: [4u + 0.5px - 3.57, -4u -0.5py - 4.5]
+          shift: [4u + 0.5px - 3, -4u -0.5py - 3]
         # top right
         - ref: matrix_col3_row4
-          shift: [4u + 0.5px - 3.57, 0.5py]
+          shift: [4u + 0.5px - 3, 0.5py]
         # top apex
         - ref: matrix_col3_row4
           shift: [-0.5px, 0.5py]
@@ -145,22 +135,22 @@ outlines:
       points:
         # top left
         - ref: matrix_col0_row3
-          shift: [-0.15u -0.5px, 0.95u + 0.5py]
+          shift: [-0.5px, 0.95u + 0.5py]
         # bottom left
         - ref: matrix_col0_row1
-          shift: [-0.15u -0.5px, -u -0.5py]
-        # under thumb
+          shift: [-0.5px, -u -0.5py]
+         # under thumb
         - ref: matrix_col0_row0
-          shift: [4u + 0.5px + 6, -0.5py]
+          shift: [4u + 0.5px + 2, -0.5py]
         # outside thumb
         - ref: thumb_outer_lower
-          shift: [0.5px, -0.5py - 3.5]
+          shift: [0.5px, -0.5py - 5.3]
         # top of thumb
         - ref: matrix_col3_row4
-          shift: [4u + 0.5px - 3.57, -4u -0.5py - 4.5]
+          shift: [4u + 0.5px - 3, -4u -0.5py - 3]
         # bottom of cutout
         - ref: matrix_col3_row4
-          shift: [4u + 0.5px - 3.57, -u -6.5]
+          shift: [4u + 0.5px - 3, -u -6.5]
         # inner cutout
         - ref: matrix_col3_row4
           shift: [2u + 0.5px, -u -6.5]
@@ -184,8 +174,8 @@ pcbs:
     outlines:
       main:
         outline: board
-      # plate:
-      #   outline: plate_outline
+      plate:
+        outline: plate_outline
     footprints:
       mx_hotswap:
         what: ceoloide/switch_mx
