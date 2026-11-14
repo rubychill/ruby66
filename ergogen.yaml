@@ -183,6 +183,7 @@ pcbs:
         params:
           reversible: true
           include_keycap: true
+          include_corner_marks: true
           hotswap_pads_same_side: true
           keycap_width: "{{width}}"
           keycap_height: "{{height}}"
@@ -230,6 +231,7 @@ pcbs:
         what: ceoloide/mounting_hole_plated
         params:
           drill: 4.9
+          outline: 0.5
         where:
           ref: matrix_col0_row4
           shift: [10, -8]
@@ -237,20 +239,23 @@ pcbs:
         what: ceoloide/mounting_hole_plated
         params:
           drill: 4.9
+          outline: 0.5
         where:
           ref: matrix_col0_row0
-          shift: [9, 9.5]
+          shift: [8.8, 9.7]
       mounting3:
         what: ceoloide/mounting_hole_plated
         params:
           drill: 4.9
+          outline: 0.5
         where:
           ref: matrix_col4_row4
-          shift: [9, -10]
+          shift: [9.4, -10]
       mounting4:
         what: ceoloide/mounting_hole_plated
         params:
           drill: 4.9
+          outline: 0.5
         where:
           ref: space_space_col_space_row
           shift: [-1, 12]
@@ -258,6 +263,7 @@ pcbs:
         what: ceoloide/mounting_hole_plated
         params:
           drill: 4.9
+          outline: 0.5
         where:
           ref: thumb_inner_lower
           shift: [9, 11]
@@ -280,14 +286,14 @@ pcbs:
           drill: 2.2
         where:
           ref: matrix_col0_row0
-          shift: [9, 9.5]
+          shift: [8.8, 9.7]
       mounting3:
         what: ceoloide/mounting_hole_plated
         params:
           drill: 2.2
         where:
           ref: matrix_col4_row4
-          shift: [9, -10]
+          shift: [9.4, -10]
       mounting4:
         what: ceoloide/mounting_hole_plated
         params:
