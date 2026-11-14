@@ -174,8 +174,8 @@ pcbs:
     outlines:
       main:
         outline: board
-      plate:
-        outline: plate_outline
+      # plate:
+      #   outline: plate_outline
     footprints:
       mx_hotswap:
         what: ceoloide/switch_mx
@@ -183,7 +183,6 @@ pcbs:
         params:
           reversible: true
           include_keycap: true
-          include_corner_marks: true
           hotswap_pads_same_side: true
           keycap_width: "{{width}}"
           keycap_height: "{{height}}"
@@ -240,7 +239,7 @@ pcbs:
           drill: 4.9
         where:
           ref: matrix_col0_row0
-          shift: [9, 11]
+          shift: [9, 9.5]
       mounting3:
         what: ceoloide/mounting_hole_plated
         params:
@@ -259,6 +258,47 @@ pcbs:
         what: ceoloide/mounting_hole_plated
         params:
           drill: 4.9
+        where:
+          ref: thumb_inner_lower
+          shift: [9, 11]
+  ruby66_plate:
+    template: kicad8
+    outlines:
+      plate:
+        outline: plate
+    footprints:
+      mounting1:
+        what: ceoloide/mounting_hole_plated
+        params:
+          drill: 2.2
+        where:
+          ref: matrix_col0_row4
+          shift: [10, -8]
+      mounting2:
+        what: ceoloide/mounting_hole_plated
+        params:
+          drill: 2.2
+        where:
+          ref: matrix_col0_row0
+          shift: [9, 9.5]
+      mounting3:
+        what: ceoloide/mounting_hole_plated
+        params:
+          drill: 2.2
+        where:
+          ref: matrix_col4_row4
+          shift: [9, -10]
+      mounting4:
+        what: ceoloide/mounting_hole_plated
+        params:
+          drill: 2.2
+        where:
+          ref: space_space_col_space_row
+          shift: [-1, 12]
+      mounting5:
+        what: ceoloide/mounting_hole_plated
+        params:
+          drill: 2.2
         where:
           ref: thumb_inner_lower
           shift: [9, 11]
