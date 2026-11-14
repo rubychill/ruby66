@@ -11,7 +11,7 @@
   (paper "A3")
   (title_block
     (title "ruby66_plate")
-    (date "2026-11-13")
+    (date "2026-11-14")
     (rev "v1.0.0")
     (company "Unknown")
   )
@@ -104,7 +104,7 @@
 
   (footprint "ceoloide:mounting_hole_plated"
     (layer "F.Cu")
-    (at 109 140.5 0)
+    (at 108.8 140.3 0)
     (property "Reference" "H2"
       (at 0 3 0)
       (layer "F.SilkS")
@@ -122,7 +122,7 @@
 
   (footprint "ceoloide:mounting_hole_plated"
     (layer "F.Cu")
-    (at 185 77.69999999999999 0)
+    (at 185.4 77.69999999999999 0)
     (property "Reference" "H3"
       (at 0 3 0)
       (layer "F.SilkS")
