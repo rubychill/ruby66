@@ -199,7 +199,7 @@ pcbs:
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          shift: [0, -5]
+          shift: [0, -8]
           rotate: 180
       promicro:
         what: ceoloide/mcu_nice_nano
