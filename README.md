@@ -1,6 +1,8 @@
 # ruby66
 66 key split ergo keyboard, based on the lily58 and redox
 
+![ruby66 keyboard](media/ruby66.jpg)
+
 # design considerations
 - same key stagger layout as the lily58
 - angled thumb button placed under the 5/6 columns a la redox
